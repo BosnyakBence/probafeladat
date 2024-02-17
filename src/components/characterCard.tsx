@@ -16,7 +16,7 @@ export default function CharacterCard({ character }: Props) {
   return (
     <>
       <Card
-        sx={{ maxWidth: 300, height: 275 }}
+        sx={{ maxWidth: 300, height: 275, bgcolor: "rgba(0, 0, 0, 0.5)" }}
         elevation={3}
         onClick={() => setOpen(true)}
       >
