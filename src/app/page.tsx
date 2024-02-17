@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Character from "../../types/characterInterface";
+import Toolbar from "@/components/toolbar";
 import CharacterCard from "@/components/characterCard";
+import CharacterSearch from "@/components/characterSearch";
 import {
   Box,
   Typography,
@@ -15,12 +17,19 @@ import { yellow } from "@mui/material/colors";
 
 export default function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchText, setSearchText] = useState("");
+
+  // Pagination
   const charactersPerPage = 12;
   const indexOfLastItem = currentPage * charactersPerPage;
   const indexOfFirstItem = indexOfLastItem - charactersPerPage;
-  const currentCharacters = characters.slice(indexOfFirstItem, indexOfLastItem);
+  const currentCharacters = filteredCharacters.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   useEffect(() => {
     fetchCharacters();
@@ -46,10 +55,24 @@ export default function Home() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    setFilteredCharacters(characters);
+  }, [characters]);
+
+  const handleFilter = (filteredCharacters: Character[]) => {
+    setFilteredCharacters(filteredCharacters);
+    setCurrentPage(1);
+  };
+
   return (
     <>
       <Box mb={2}>
-        <Typography variant="h2" align="center" gutterBottom>
+        <Typography
+          variant="h2"
+          align="center"
+          color={yellow[500]}
+          gutterBottom
+        >
           Star Wars Characters
         </Typography>
       </Box>
@@ -59,6 +82,7 @@ export default function Home() {
         </Box>
       ) : (
         <>
+          <Toolbar characters={characters} onFilter={handleFilter} />
           <Container>
             <Grid container spacing={3}>
               {currentCharacters.map((character) => (
@@ -72,9 +96,17 @@ export default function Home() {
           <Box mt={2}>
             <Stack spacing={2} direction="row" justifyContent="center">
               <Pagination
-                count={Math.ceil(characters.length / charactersPerPage)}
+                count={Math.ceil(filteredCharacters.length / charactersPerPage)}
                 page={currentPage}
                 size="large"
+                sx={{
+                  "& .MuiPaginationItem-root": {
+                    color: yellow[500],
+                  },
+                  "& .Mui-selected": {
+                    color: yellow[900],
+                  },
+                }}
                 onChange={(event, page) => setCurrentPage(page)}
               />
             </Stack>
