@@ -66,8 +66,10 @@ export default function Home() {
         </Typography>
       </Box>
       {loading ? (
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <CircularProgress sx={{ color: yellow[500] }} />
+        <Box
+          sx={{ display: "flex", justifyContent: "center", marginTop: "35vh" }}
+        >
+          <CircularProgress size={75} sx={{ color: yellow[500] }} />
         </Box>
       ) : (
         <>
