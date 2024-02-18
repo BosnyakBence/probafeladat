@@ -23,6 +23,7 @@ export default function CharacterSearch({ onSearch }: Props) {
       onChange={handleChange}
       fullWidth
       margin="normal"
+      autoComplete="off"
       placeholder="Enter character name"
       sx={{
         "& .MuiOutlinedInput-root": {
