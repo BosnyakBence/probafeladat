@@ -1,33 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 24, 24, 24;
-  --background-end-rgb: 18, 18, 18;
+@font-face {
+  font-family: "Star Jedi";
+  src: url("/fonts/Starjedi.ttf");
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
- */
 body {
-  background-image: url("/bg.jpg");
+  background-image: url("/images/bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.title {
+  font-family: "Star Jedi";
+  margin-top: 50px;
+}
+
+.toolbar {
+  margin-bottom: 50px;
+}
+
+.name {
+  font-family: "Star Jedi";
+}
+
+.pagination {
+  margin-top: 50px;
 }
