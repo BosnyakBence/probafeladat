@@ -20,7 +20,6 @@ export default function Home() {
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchText, setSearchText] = useState("");
 
   // Pagination
   const charactersPerPage = 12;
@@ -82,8 +81,8 @@ export default function Home() {
         </Box>
       ) : (
         <>
-          <Toolbar characters={characters} onFilter={handleFilter} />
           <Container>
+            <Toolbar characters={characters} onFilter={handleFilter} />
             <Grid container spacing={3}>
               {currentCharacters.map((character) => (
                 <Grid item key={character.name} xs={12} sm={6} md={3}>
