@@ -24,7 +24,6 @@ export default function CharacterSearch({ onSearch }: Props) {
       fullWidth
       margin="normal"
       placeholder="Enter character name"
-      color="warning"
       sx={{
         "& .MuiOutlinedInput-root": {
           color: yellow[500],
@@ -40,6 +39,9 @@ export default function CharacterSearch({ onSearch }: Props) {
         },
         "& .MuiInputLabel-root": {
           color: yellow[500],
+          "&.Mui-focused": {
+            color: yellow[500],
+          },
         },
       }}
     />
