@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Character from "../../types/characterInterface";
 import Toolbar from "@/components/toolbar";
 import CharacterCard from "@/components/characterCard";
-import CharacterSearch from "@/components/characterSearch";
+import CharacterPagination from "@/components/characterPagination";
 import {
   Box,
   Typography,
@@ -18,17 +18,8 @@ import { yellow } from "@mui/material/colors";
 export default function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
+  const [currentCharacters, setCurrentCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // Pagination
-  const charactersPerPage = 12;
-  const indexOfLastItem = currentPage * charactersPerPage;
-  const indexOfFirstItem = indexOfLastItem - charactersPerPage;
-  const currentCharacters = filteredCharacters.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
 
   useEffect(() => {
     fetchCharacters();
@@ -60,7 +51,6 @@ export default function Home() {
 
   const handleFilter = (filteredCharacters: Character[]) => {
     setFilteredCharacters(filteredCharacters);
-    setCurrentPage(1);
   };
 
   return (
@@ -70,7 +60,7 @@ export default function Home() {
           variant="h2"
           align="center"
           color={yellow[500]}
-          gutterBottom
+          className="title"
         >
           Star Wars Characters
         </Typography>
@@ -82,34 +72,25 @@ export default function Home() {
       ) : (
         <>
           <Container>
-            <Toolbar characters={characters} onFilter={handleFilter} />
+            <div className="toolbar">
+              <Toolbar characters={characters} onFilter={handleFilter} />
+            </div>
+
             <Grid container spacing={3}>
               {currentCharacters.map((character) => (
-                <Grid item key={character.name} xs={12} sm={6} md={3}>
+                <Grid item key={character.name} xs={12} sm={6} md={4} lg={3}>
                   <CharacterCard character={character} />
                 </Grid>
               ))}
             </Grid>
-          </Container>
 
-          <Box mt={2}>
-            <Stack spacing={2} direction="row" justifyContent="center">
-              <Pagination
-                count={Math.ceil(filteredCharacters.length / charactersPerPage)}
-                page={currentPage}
-                size="large"
-                sx={{
-                  "& .MuiPaginationItem-root": {
-                    color: yellow[500],
-                  },
-                  "& .Mui-selected": {
-                    color: yellow[900],
-                  },
-                }}
-                onChange={(event, page) => setCurrentPage(page)}
+            <div className="pagination">
+              <CharacterPagination
+                filteredCharacters={filteredCharacters}
+                onChange={(value) => setCurrentCharacters(value)}
               />
-            </Stack>
-          </Box>
+            </div>
+          </Container>
         </>
       )}
     </>
