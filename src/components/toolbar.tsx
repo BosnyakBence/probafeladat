@@ -92,16 +92,24 @@ export default function Toolbar({ characters, onFilter }: Props) {
       <CharacterSearch onSearch={(searchText) => setSearchText(searchText)} />
       <Autocomplete
         id="gender-filter"
-        options={genderOptions}
+        options={["all", ...genderOptions]}
         value={selectedGender}
-        onChange={(event, newValue) => setSelectedGender(newValue)}
+        onChange={(event, newValue) =>
+          newValue === "all"
+            ? setSelectedGender(null)
+            : setSelectedGender(newValue)
+        }
         renderInput={(params) => <TextField {...params} label="Gender" />}
       />
       <Autocomplete
         id="homeworld-filter"
-        options={Object.keys(homeWorldOptions)}
+        options={["all", ...Object.keys(homeWorldOptions)]}
         value={selectedHomeWorld}
-        onChange={(event, newValue) => setSelectedHomeWorld(newValue)}
+        onChange={(event, newValue) =>
+          newValue === "all"
+            ? setSelectedHomeWorld(null)
+            : setSelectedHomeWorld(newValue)
+        }
         renderInput={(params) => <TextField {...params} label="Homeworld" />}
       />
     </Box>
