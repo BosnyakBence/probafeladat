@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Autocomplete, TextField } from "@mui/material";
+import { Grid, Autocomplete, TextField } from "@mui/material";
 import Character from "../../types/characterInterface";
 import CharacterSearch from "./characterSearch";
 
@@ -88,30 +88,36 @@ export default function Toolbar({ characters, onFilter }: Props) {
   };
 
   return (
-    <Box mt={2}>
-      <CharacterSearch onSearch={(searchText) => setSearchText(searchText)} />
-      <Autocomplete
-        id="gender-filter"
-        options={["all", ...genderOptions]}
-        value={selectedGender}
-        onChange={(event, newValue) =>
-          newValue === "all"
-            ? setSelectedGender(null)
-            : setSelectedGender(newValue)
-        }
-        renderInput={(params) => <TextField {...params} label="Gender" />}
-      />
-      <Autocomplete
-        id="homeworld-filter"
-        options={["all", ...Object.keys(homeWorldOptions)]}
-        value={selectedHomeWorld}
-        onChange={(event, newValue) =>
-          newValue === "all"
-            ? setSelectedHomeWorld(null)
-            : setSelectedHomeWorld(newValue)
-        }
-        renderInput={(params) => <TextField {...params} label="Homeworld" />}
-      />
-    </Box>
+    <Grid container spacing={2} mt={2}>
+      <Grid item xs={12} sm={4}>
+        <CharacterSearch onSearch={(searchText) => setSearchText(searchText)} />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Autocomplete
+          id="gender-filter"
+          options={["all", ...genderOptions]}
+          value={selectedGender}
+          onChange={(event, newValue) =>
+            newValue === "all"
+              ? setSelectedGender(null)
+              : setSelectedGender(newValue)
+          }
+          renderInput={(params) => <TextField {...params} label="Gender" />}
+        />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Autocomplete
+          id="homeworld-filter"
+          options={["all", ...Object.keys(homeWorldOptions)]}
+          value={selectedHomeWorld}
+          onChange={(event, newValue) =>
+            newValue === "all"
+              ? setSelectedHomeWorld(null)
+              : setSelectedHomeWorld(newValue)
+          }
+          renderInput={(params) => <TextField {...params} label="Homeworld" />}
+        />
+      </Grid>
+    </Grid>
   );
 }
