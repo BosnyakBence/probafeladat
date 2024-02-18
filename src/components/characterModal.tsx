@@ -70,20 +70,32 @@ export default function CharacterModal({
           }}
         />
         <Grid container spacing={2} alignItems="center">
-          <Grid item container xs={6} alignItems="center">
+          <Grid
+            item
+            container
+            xs={6}
+            alignItems="center"
+            justifyContent="center"
+          >
             <Grid item>
               <HeightIcon style={{ color: yellow[500] }} />
             </Grid>
             <Grid item>
               <Typography
                 variant="body1"
-                style={{ color: yellow[500], paddingLeft: "5px" }}
+                style={{ color: yellow[500], paddingLeft: "4px" }}
               >
                 {character.height} {character.height !== "unknown" && "cm"}
               </Typography>
             </Grid>
           </Grid>
-          <Grid item container xs={6} alignItems="center">
+          <Grid
+            item
+            container
+            xs={6}
+            alignItems="center"
+            justifyContent="center"
+          >
             <Grid item>
               <ScaleIcon style={{ color: yellow[500] }} />
             </Grid>
