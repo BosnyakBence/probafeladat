@@ -1,52 +1,30 @@
 const characterImages: Record<string, string> = {
-  "Luke Skywalker":
-    "https://lumiere-a.akamaihd.net/v1/images/luke-skywalker-main_7ffe21c7.jpeg?region=130%2C147%2C1417%2C796",
-  "C-3PO":
-    "https://lumiere-a.akamaihd.net/v1/images/c-3po-main_d6850e28.jpeg?region=176%2C0%2C951%2C536",
-  "R2-D2":
-    "https://lumiere-a.akamaihd.net/v1/images/r2-d2-main_f315b094.jpeg?region=273%2C0%2C951%2C536",
-  "Darth Vader":
-    "https://assets.telex.hu/images/20230906/1694002393-temp-gGJEME_cover.jpg",
-  "Leia Organa":
-    "https://lumiere-a.akamaihd.net/v1/images/leia-organa-main_9af6ff81.jpeg?region=187%2C157%2C1400%2C786",
-  "Owen Lars":
-    "https://lumiere-a.akamaihd.net/v1/images/owen-lars-main_08c717c8.jpeg?region=0%2C34%2C1053%2C593",
-  "Beru Whitesun lars":
-    "https://clonecorridor.files.wordpress.com/2015/09/beru-lars-6.jpg",
-  "R5-D4":
-    "https://www.looper.com/img/gallery/r5-d4-the-complete-history-of-din-djarins-ally-in-the-mandalorian-explained/intro-1678514086.webp",
-  "Biggs Darklighter":
-    "https://lumiere-a.akamaihd.net/v1/images/image_606ff7f7.jpeg?region=0%2C0%2C1560%2C878",
-  "Obi-Wan Kenobi":
-    "https://www.kulter.hu/wp-content/uploads/2022/07/MV5BNjFiZTllM2ItMDBmMy00YjczLTgxMDktYmZhMWY4MDAyMjRlXkEyXkFqcGdeQXZ3ZXNsZXk@._V1_.jpg",
-  "Anakin Skywalker":
-    "https://www.liveabout.com/thmb/62CoLXqCaCTlYOYr8np2Sgjru2k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/EP2-IA-32565_R_8x10-56a83bdc5f9b58b7d0f1b389.jpg",
-  "Wilhuff Tarkin":
-    "https://upload.wikimedia.org/wikipedia/hu/5/5a/Grand_Moff_Tarkin.png",
-  Chewbacca:
-    "https://ocdn.eu/pulscms-transforms/1/0Pvk9kpTURBXy80ZWI3ZWZkNDI3NDY4NzQ3NTBmM2Q3MmZlMDc2YmRkZi5qcGeSlQPNB5zNA2_NEO3NCYWTBc0C6M0Bnt4AAaEwAQ",
-  "Han Solo":
-    "https://upload.wikimedia.org/wikipedia/hu/c/cd/Han_Solo_TESB.jpg",
-  Greedo: "https://cdn.mos.cms.futurecdn.net/KS9oKvuRPp4FyWhjhvzRmN.jpg",
-  "Jabba Desilijic Tiure":
-    "https://swrpggm.com/wp-content/uploads/2021/08/Jabba_FE-2.png",
-  "Wedge Antilles":
-    "https://www.fanthatracks.com/wp-content/uploads/2018/09/wedgeantilles_rotj_1.jpg",
-  "Jek Tono Porkins": "https://i.redd.it/kfvbjz2ootu41.jpg",
-  Yoda: "https://upload.wikimedia.org/wikipedia/hu/thumb/4/45/Yoda.jpg/250px-Yoda.jpg",
-  Palpatine:
-    "https://media1.popsugar-assets.com/files/thumbor/kgaAD3f5OJI9NTg8xvVtDgznFX8=/360x0:1920x819/fit-in/1920x819/top/filters:format_auto():quality(85):upscale()/2019/04/13/900/n/41541398/226b55bf5cb2484188a251.84156792_.jpg",
-  "Boba Fett":
-    "https://lumiere-a.akamaihd.net/v1/images/boba-fett-main_a8fade4d.jpeg?region=205%2C34%2C1064%2C598",
-  "IG-88":
-    "https://lumiere-a.akamaihd.net/v1/images/ig_88_cdd5cc52.jpeg?region=0%2C95%2C2453%2C1375",
-  Bossk:
-    "https://images.squarespace-cdn.com/content/v1/5fbc4a62c2150e62cfcb09aa/1630034140339-NHQ1OAH7US4DMMO8JUGH/Bossk.jpg",
-  "Lando Calrissian":
-    "https://upload.wikimedia.org/wikipedia/en/c/cb/Lando6-2.jpg",
-  Lobot:
-    "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/11/lobot-true-purpose-star-wars-image.jpg",
-  Ackbar: "https://upload.wikimedia.org/wikipedia/hu/f/fc/Ackbar_ROTJ.jpg",
+  "Luke Skywalker": "/images/characters/luke.jpeg",
+  "C-3PO": "images/characters/c-3po.jpeg",
+  "R2-D2": "/images/characters/r2-d2.jpeg",
+  "Darth Vader": "/images/characters/vader.jpg",
+  "Leia Organa": "/images/characters/leia.jpeg",
+  "Owen Lars": "/images/characters/owen.jpeg",
+  "Beru Whitesun lars": "/images/characters/beru.jpg",
+  "R5-D4": "/images/characters/r5-d4.webp",
+  "Biggs Darklighter": "/images/characters/biggs.jpeg",
+  "Obi-Wan Kenobi": "/images/characters/kenobi.jpg",
+  "Anakin Skywalker": "/images/characters/anakin.jpg",
+  "Wilhuff Tarkin": "/images/characters/tarkin.png",
+  Chewbacca: "/images/characters/chewbacca.jpeg",
+  "Han Solo": "/images/characters/han.jpg",
+  Greedo: "/images/characters/greedo.jpg",
+  "Jabba Desilijic Tiure": "/images/characters/jabba.webp",
+  "Wedge Antilles": "/images/characters/wedge.jpg",
+  "Jek Tono Porkins": "/images/characters/jek.jpg",
+  Yoda: "/images/characters/yoda.jpg",
+  Palpatine: "/images/characters/palpatine.webp",
+  "Boba Fett": "/images/characters/boba.jpeg",
+  "IG-88": "/images/characters/ig-88.jpeg",
+  Bossk: "/images/characters/bossk.jpg",
+  "Lando Calrissian": "/images/characters/lando.jpg",
+  Lobot: "/images/characters/lobot.avif",
+  Ackbar: "/images/characters/ackbar.jpg",
   "Mon Mothma":
     "https://lumiere-a.akamaihd.net/v1/images/mon-mothma-main_06f17008.jpeg?region=247%2C0%2C1426%2C802",
   "Arvel Crynyd":
