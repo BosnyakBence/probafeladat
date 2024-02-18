@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Grid, Autocomplete, TextField } from "@mui/material";
+import { Grid } from "@mui/material";
 import Character from "../../types/characterInterface";
 import CharacterSearch from "./characterSearch";
+import CharacterFilter from "./characterFilter";
 
 export interface Props {
   characters: Character[];
@@ -15,7 +16,7 @@ export default function Toolbar({ characters, onFilter }: Props) {
   const [homeWorldOptions, setHomeWorldOptions] = useState<
     Record<string, string>
   >({});
-  const [selectedHomeWorld, setSelectedHomeWorld] = useState<string | null>(
+  const [selectedHomeworld, setselectedHomeworld] = useState<string | null>(
     null
   );
 
@@ -64,7 +65,7 @@ export default function Toolbar({ characters, onFilter }: Props) {
 
   useEffect(() => {
     filterCharacters();
-  }, [searchText, selectedGender, selectedHomeWorld]);
+  }, [searchText, selectedGender, selectedHomeworld]);
 
   const filterCharacters = () => {
     let filteredCharacters = characters.filter((character) =>
@@ -77,10 +78,10 @@ export default function Toolbar({ characters, onFilter }: Props) {
       );
     }
 
-    if (selectedHomeWorld) {
+    if (selectedHomeworld) {
       filteredCharacters = filteredCharacters.filter(
         (character) =>
-          character.homeworld === homeWorldOptions[selectedHomeWorld]
+          character.homeworld === homeWorldOptions[selectedHomeworld]
       );
     }
 
@@ -93,29 +94,17 @@ export default function Toolbar({ characters, onFilter }: Props) {
         <CharacterSearch onSearch={(searchText) => setSearchText(searchText)} />
       </Grid>
       <Grid item xs={12} sm={4}>
-        <Autocomplete
-          id="gender-filter"
-          options={["all", ...genderOptions]}
-          value={selectedGender}
-          onChange={(event, newValue) =>
-            newValue === "all"
-              ? setSelectedGender(null)
-              : setSelectedGender(newValue)
-          }
-          renderInput={(params) => <TextField {...params} label="Gender" />}
+        <CharacterFilter
+          label="Gender"
+          options={genderOptions}
+          onSelect={(value) => setSelectedGender(value)}
         />
       </Grid>
       <Grid item xs={12} sm={4}>
-        <Autocomplete
-          id="homeworld-filter"
-          options={["all", ...Object.keys(homeWorldOptions)]}
-          value={selectedHomeWorld}
-          onChange={(event, newValue) =>
-            newValue === "all"
-              ? setSelectedHomeWorld(null)
-              : setSelectedHomeWorld(newValue)
-          }
-          renderInput={(params) => <TextField {...params} label="Homeworld" />}
+        <CharacterFilter
+          label="Homeworld"
+          options={Object.keys(homeWorldOptions)}
+          onSelect={(value) => setselectedHomeworld(value)}
         />
       </Grid>
     </Grid>
