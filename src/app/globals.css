@@ -24,6 +24,15 @@ body {
   font-family: "Star Jedi";
 }
 
+.character-card {
+  transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .pagination {
   margin-top: 50px;
 }
