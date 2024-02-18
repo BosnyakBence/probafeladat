@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
 import { Modal, Box, Grid, Typography } from "@mui/material";
+import HeightIcon from "@mui/icons-material/Height";
+import ScaleIcon from "@mui/icons-material/Scale";
+import CheckIcon from "@mui/icons-material/Check";
+import ClearIcon from "@mui/icons-material/Clear";
 import Character from "../../types/characterInterface";
-import { yellow } from "@mui/material/colors";
-import characterImages from "@/assets/characterImages";
+import { yellow, red, green } from "@mui/material/colors";
+import characterImages from "@/constants/characterImages";
+import movies from "@/constants/movies";
 
 export interface Props {
   character: Character;
@@ -15,7 +19,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
+  width: 450,
   backgroundColor: "rgba(0, 0, 0, 0.9)",
   borderRadius: 10,
   padding: 7,
@@ -28,28 +32,6 @@ export default function CharacterModal({
   open,
   handleClose,
 }: Props) {
-  const [films, setFilms] = useState<string[]>([]);
-
-  useEffect(() => {
-    fetchCharacters();
-  }, []);
-
-  const fetchCharacters = async () => {
-    let data: string[] = [];
-
-    for (const film of character.films) {
-      try {
-        const response = await fetch(film);
-        const json = await response.json();
-        data = data.concat(json.title);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    setFilms(data);
-  };
-
   return (
     <Modal
       open={open}
@@ -58,26 +40,90 @@ export default function CharacterModal({
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
+        <div style={{ textAlign: "center", marginBottom: "10px" }}>
+          <img
+            src={characterImages[character.name]}
+            alt={character.name}
+            style={{
+              width: "150px",
+              height: "150px",
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: `2px solid ${yellow[500]}`,
+            }}
+          />
+        </div>
         <Typography
           id="modal-modal-title"
           variant="h6"
           component="h2"
+          className="name"
           sx={{ textAlign: "center", color: yellow[500] }}
         >
           {character.name}
         </Typography>
-        <Typography
-          id="modal-modal-description"
-          sx={{ mt: 2, color: yellow[500] }}
-        >
-          Height: {character.height} cm
-          <br />
-          Weight: {character.mass} kg
-          <br />
-          {films.length > 0 && (
-            <>Films: {films.map((film) => `${film}`).join(", ")}</>
-          )}
-        </Typography>
+        <hr
+          style={{
+            borderTop: `1px solid ${yellow[500]}`,
+            width: "100%",
+            margin: "16px auto",
+          }}
+        />
+        <Grid container spacing={2} alignItems="center">
+          <Grid item container xs={6} alignItems="center">
+            <Grid item>
+              <HeightIcon style={{ color: yellow[500] }} />
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="body1"
+                style={{ color: yellow[500], paddingLeft: "5px" }}
+              >
+                {character.height} {character.height !== "unknown" && "cm"}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item container xs={6} alignItems="center">
+            <Grid item>
+              <ScaleIcon style={{ color: yellow[500] }} />
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="body1"
+                style={{ color: yellow[500], paddingLeft: "10px" }}
+              >
+                {character.mass} {character.mass !== "unknown" && "kg"}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+        <hr
+          style={{
+            borderTop: `1px solid ${yellow[500]}`,
+            width: "100%",
+            margin: "16px auto",
+          }}
+        />
+        <Grid container spacing={2}>
+          {Object.keys(movies).map((movie) => (
+            <Grid container key={movie} item xs={6} alignItems="center">
+              <Grid item>
+                <Typography variant="body1" style={{ color: yellow[500] }}>
+                  {movie}
+                </Typography>
+              </Grid>
+              <Grid item>
+                {character.films.includes(movies[movie]) ? (
+                  <CheckIcon
+                    style={{ color: green[500], paddingLeft: "10px" }}
+                  />
+                ) : (
+                  <ClearIcon style={{ color: red[500], paddingLeft: "10px" }} />
+                )}
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Modal>
   );
