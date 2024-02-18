@@ -2,7 +2,7 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { yellow } from "@mui/material/colors";
-import characterImages from "@/assets/characterImages";
+import characterImages from "@/constants/characterImages";
 import Character from "../../types/characterInterface";
 import CharacterModal from "./characterModal";
 
@@ -16,7 +16,7 @@ export default function CharacterCard({ character }: Props) {
   return (
     <>
       <Card
-        sx={{ maxWidth: 300, height: 275, bgcolor: "rgba(0, 0, 0, 0.5)" }}
+        sx={{ maxWidth: 350, height: 300, bgcolor: "rgba(0, 0, 0, 0.5)" }}
         elevation={3}
         onClick={() => setOpen(true)}
       >
@@ -30,6 +30,7 @@ export default function CharacterCard({ character }: Props) {
             variant="h5"
             component="div"
             align="center"
+            className="name"
             color={yellow[500]}
           >
             {character.name}
