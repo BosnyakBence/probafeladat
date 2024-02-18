@@ -25,48 +25,28 @@ const characterImages: Record<string, string> = {
   "Lando Calrissian": "/images/characters/lando.jpg",
   Lobot: "/images/characters/lobot.avif",
   Ackbar: "/images/characters/ackbar.jpg",
-  "Mon Mothma":
-    "https://lumiere-a.akamaihd.net/v1/images/mon-mothma-main_06f17008.jpeg?region=247%2C0%2C1426%2C802",
-  "Arvel Crynyd":
-    "https://media.anakinworld.com/uploads/entries/original/personnage-sila-kott-12480.jpg",
-  "Wicket Systri Warrick":
-    "https://lumiere-a.akamaihd.net/v1/images/databank_wickettwwarrick_01_169_86d1210c.jpeg",
-  "Nien Nunb":
-    "https://upload.wikimedia.org/wikipedia/en/9/9e/Nien_Nunb_Return_of_the_Jedi.jpeg",
-  "Qui-Gon Jinn":
-    "https://upload.wikimedia.org/wikipedia/en/a/ad/Qui-Gon_Jinn.png",
-  "Nute Gunray":
-    "https://lumiere-a.akamaihd.net/v1/images/databank_nutegunray_01_169_9d66ded2.jpeg?region=195%2C0%2C1171%2C878",
-  "Finis Valorum":
-    "https://static1.srcdn.com/wordpress/wp-content/uploads/2017/03/Terence-Stamp-as-Finis-Valorum-in-Star-Wars.jpg",
-  "Padmé Amidala": "https://upload.wikimedia.org/wikipedia/en/e/ee/Amidala.png",
-  "Jar Jar Binks":
-    "https://i.guim.co.uk/img/media/db92d0f5c8eb85f2b6f7b456d76313b9518f61c3/0_561_2086_1557/master/2086.jpg?width=465&dpr=1&s=none",
-  "Roos Tarpals":
-    "https://swrpggm.com/wp-content/uploads/2022/12/Roos-Tarpals_FE.jpg",
-  "Rugor Nass":
-    "https://lumiere-a.akamaihd.net/v1/images/databank_bossnass_01_169_ef11c0db.jpeg?region=195%2C0%2C1171%2C878",
-  "Ric Olié":
-    "https://lumiere-a.akamaihd.net/v1/images/databank_ricolie_01_169_f175f81b.jpeg?region=0%2C0%2C1560%2C878",
-  Watto:
-    "https://www.looper.com/img/gallery/what-happened-to-watto-causes-a-darth-maul-plot-hole-in-star-wars-canon-schedule-for-weekend/l-intro-1692826487.jpg",
-  Sebulba:
-    "https://lumiere-a.akamaihd.net/v1/images/sebulba_1f3fe180.jpeg?region=240%2C0%2C1376%2C1380",
-  "Quarsh Panaka":
-    "https://lumiere-a.akamaihd.net/v1/images/databank_captainpanaka_01_169_6a3ccac5.jpeg?region=0%2C0%2C1560%2C878",
-  "Shmi Skywalker":
-    "https://static1.srcdn.com/wordpress/wp-content/uploads/2020/07/Shmi-Skywalker-in-The-Phantom-Menace.jpg",
-  "Darth Maul":
-    "https://lumiere-a.akamaihd.net/v1/images/image_c0d20b99.jpeg?region=158,0,1244,700&width=768",
-  "Bib Fortuna":
-    "https://upload.wikimedia.org/wikipedia/en/6/65/Bib_Fortuna_%28screenshot%29.jpg",
-  "Ayla Secura":
-    "https://upload.wikimedia.org/wikipedia/hu/b/b8/Aayla_Secura_ROTS.jpg",
-  "Ratts Tyerel":
-    "https://lumiere-a.akamaihd.net/v1/images/databank_rattstyerell_01_169_031aea6d.jpeg?region=0%2C0%2C1560%2C780",
-  "Dud Bolt": "https://i.redd.it/g7hfqk7sme851.jpg",
-  Gasgano:
-    "https://i.pinimg.com/originals/af/a6/34/afa634ec642bc467d235b2f71f804eea.png",
+  "Mon Mothma": "/images/characters/mothma.jpeg",
+  "Arvel Crynyd": "/images/characters/arvel.jpg",
+  "Wicket Systri Warrick": "/images/characters/wicket.jpeg",
+  "Nien Nunb": "/images/characters/nien.jpeg",
+  "Qui-Gon Jinn": "/images/characters/qui-gon.png",
+  "Nute Gunray": "/images/characters/nute.jpeg",
+  "Finis Valorum": "/images/characters/valorum.avif",
+  "Padmé Amidala": "/images/characters/padme.png",
+  "Jar Jar Binks": "/images/characters/jarjar.avif",
+  "Roos Tarpals": "/images/characters/roos.webp",
+  "Rugor Nass": "/images/characters/rugor.jpeg",
+  "Ric Olié": "/images/characters/ric.jpeg",
+  Watto: "/images/characters/watto.jpg",
+  Sebulba: "/images/characters/sebulba.jpeg",
+  "Quarsh Panaka": "/images/characters/panaka.jpeg",
+  "Shmi Skywalker": "/images/characters/shmi.avif",
+  "Darth Maul": "/images/characters/maul.jpeg",
+  "Bib Fortuna": "/images/characters/bib.jpg",
+  "Ayla Secura": "/images/characters/ayla.jpg",
+  "Ratts Tyerel": "/images/characters/ratts.jpeg",
+  "Dud Bolt": "/images/characters/dud.jpg",
+  Gasgano: "/images/characters/gasgano.png",
   "Ben Quadinaros":
     "https://lumiere-a.akamaihd.net/v1/images/databank_benquadinaros_01_169_0c77b6a0.jpeg?region=0%2C0%2C1560%2C878",
   "Mace Windu":
