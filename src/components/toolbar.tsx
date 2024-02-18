@@ -12,8 +12,19 @@ export default function Toolbar({ characters, onFilter }: Props) {
   const [searchText, setSearchText] = useState("");
   const [genderOptions, setGenderOptions] = useState<string[]>([]);
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
+  const [homeWorldOptions, setHomeWorldOptions] = useState<
+    Record<string, string>
+  >({});
+  const [selectedHomeWorld, setSelectedHomeWorld] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
+    getGenderOptions();
+    getHomeWorldOptions();
+  }, [characters]);
+
+  const getGenderOptions = () => {
     const genders = characters
       .reduce((genders: string[], character: Character) => {
         if (!genders.includes(character.gender)) {
@@ -23,22 +34,37 @@ export default function Toolbar({ characters, onFilter }: Props) {
       }, [])
       .sort((a, b) => a.localeCompare(b));
     setGenderOptions(genders);
-  }, [characters]);
+  };
+
+  const getHomeWorldOptions = async () => {
+    const worldURLs = characters.reduce(
+      (worlds: string[], character: Character) => {
+        if (!worlds.includes(character.homeworld)) {
+          worlds.push(character.homeworld);
+        }
+        return worlds;
+      },
+      []
+    );
+
+    const homeWorlds: Record<string, string> = {};
+
+    for (const url of worldURLs) {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        homeWorlds[json.name] = url;
+      } catch (error) {
+        console.error(`Error fetching homeworld: ${error}`);
+      }
+    }
+
+    setHomeWorldOptions(homeWorlds);
+  };
 
   useEffect(() => {
     filterCharacters();
-  }, [searchText, selectedGender]);
-
-  const handleSearch = (searchText: string) => {
-    setSearchText(searchText);
-  };
-
-  const handleGenderChange = (
-    event: React.ChangeEvent<{}>,
-    newValue: string | null
-  ) => {
-    setSelectedGender(newValue);
-  };
+  }, [searchText, selectedGender, selectedHomeWorld]);
 
   const filterCharacters = () => {
     let filteredCharacters = characters.filter((character) =>
@@ -51,18 +77,32 @@ export default function Toolbar({ characters, onFilter }: Props) {
       );
     }
 
+    if (selectedHomeWorld) {
+      filteredCharacters = filteredCharacters.filter(
+        (character) =>
+          character.homeworld === homeWorldOptions[selectedHomeWorld]
+      );
+    }
+
     onFilter(filteredCharacters);
   };
 
   return (
     <Box mt={2}>
-      <CharacterSearch onSearch={handleSearch} />
+      <CharacterSearch onSearch={(searchText) => setSearchText(searchText)} />
       <Autocomplete
         id="gender-filter"
         options={genderOptions}
         value={selectedGender}
-        onChange={handleGenderChange}
+        onChange={(event, newValue) => setSelectedGender(newValue)}
         renderInput={(params) => <TextField {...params} label="Gender" />}
+      />
+      <Autocomplete
+        id="homeworld-filter"
+        options={Object.keys(homeWorldOptions)}
+        value={selectedHomeWorld}
+        onChange={(event, newValue) => setSelectedHomeWorld(newValue)}
+        renderInput={(params) => <TextField {...params} label="Homeworld" />}
       />
     </Box>
   );
